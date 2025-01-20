@@ -4,7 +4,7 @@ import {
   GitCompareArrowsIcon,
   HomeIcon,
   ImageIcon,
-} from "lucide-react";
+} from 'lucide-react';
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 

@@ -1,7 +1,10 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { REGEXP_ONLY_DIGITS_AND_CHARS } from 'input-otp';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useTransition } from 'react';
+import { useForm } from 'react-hook-form';
 
 import {
   Form,
@@ -9,18 +12,14 @@ import {
   FormField,
   FormItem,
   FormMessage,
-} from "@/components/ui/form";
+} from '@/components/ui/form';
+import { AuthFormValues, authSchema } from '@/server/validations/auth';
+import { cn } from '@/utils';
 
-import { useRouter, useSearchParams } from "next/navigation";
-
-import { AuthFormValues, authSchema } from "@/server/validations/auth";
-import { cn } from "@/utils";
-import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
-import { useTransition } from "react";
-import { OAuthSignIn } from "./oauth-signin";
-import PhoneInput from "./phone-input";
-import { Button } from "./ui/button";
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "./ui/input-otp";
+import { OAuthSignIn } from './oauth-signin';
+import PhoneInput from './phone-input';
+import { Button } from './ui/button';
+import { InputOTP, InputOTPGroup, InputOTPSlot } from './ui/input-otp';
 
 interface AuthFormProps {
   showTwoFactor: boolean;
@@ -30,14 +29,14 @@ interface AuthFormProps {
 export function AuthForm({ showTwoFactor, setShowTwoFactor }: AuthFormProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/";
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<AuthFormValues>({
     resolver: zodResolver(authSchema),
     defaultValues: {
-      phoneNumber: "",
-      code: "",
+      phoneNumber: '',
+      code: '',
     },
   });
 
@@ -58,8 +57,8 @@ export function AuthForm({ showTwoFactor, setShowTwoFactor }: AuthFormProps) {
     const { code } = form.getValues();
     startTransition(async () => {
       try {
-        const result = await signIn("otp", {
-          callbackUrl: callbackUrl || "/",
+        const result = await signIn('otp', {
+          callbackUrl: callbackUrl || '/',
           otp: code,
           redirect: false,
         });
@@ -83,10 +82,10 @@ export function AuthForm({ showTwoFactor, setShowTwoFactor }: AuthFormProps) {
                     <PhoneInput
                       {...field}
                       className={cn(
-                        "mx-auto",
+                        'mx-auto',
                         form.formState.errors.phoneNumber
-                          ? "border-red-500"
-                          : ""
+                          ? 'border-red-500'
+                          : ''
                       )}
                     />
                   </FormControl>
@@ -108,8 +107,8 @@ export function AuthForm({ showTwoFactor, setShowTwoFactor }: AuthFormProps) {
                     >
                       <InputOTPGroup
                         className={cn(
-                          "mx-auto",
-                          form.formState.errors.code ? "border-red-500" : ""
+                          'mx-auto',
+                          form.formState.errors.code ? 'border-red-500' : ''
                         )}
                       >
                         <InputOTPSlot index={0} />
@@ -132,11 +131,11 @@ export function AuthForm({ showTwoFactor, setShowTwoFactor }: AuthFormProps) {
                 disabled={isPending}
                 onClick={sendVerificationCode}
               >
-                {isPending ? "Processing..." : "Send code"}
+                {isPending ? 'Processing...' : 'Send code'}
               </Button>
             ) : (
               <Button className="w-full" disabled={isPending} onClick={verify}>
-                {isPending ? "Processing..." : "Verify"}
+                {isPending ? 'Processing...' : 'Verify'}
               </Button>
             )}
           </div>

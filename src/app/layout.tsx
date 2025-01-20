@@ -1,11 +1,12 @@
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
-import type { Metadata, Viewport } from "next";
+import { GeistMono } from 'geist/font/mono';
+import { GeistSans } from 'geist/font/sans';
 
-import { app } from "@/config/app";
-import { Providers } from "@/providers";
-import "@/styles/globals.css";
-import { cn } from "@/utils";
+import { app } from '@/config/app';
+import { Providers } from '@/providers';
+import '@/styles/globals.css';
+import { cn } from '@/utils';
+
+import type { Metadata, Viewport } from 'next';
 
 const fontSans = GeistSans;
 const fontMono = GeistMono;
@@ -20,14 +21,14 @@ export const metadata: Metadata = {
   keywords: app.keywords,
   authors: [
     {
-      name: "Maks Pekur",
-      url: "https://agency.bleverse.com",
+      name: 'Maks Pekur',
+      url: 'https://agency.bleverse.com',
     },
   ],
-  creator: "Maks Pekur",
+  creator: 'Maks Pekur',
   openGraph: {
-    type: "website",
-    locale: "en",
+    type: 'website',
+    locale: 'en',
     url: app.url,
     title: app.name,
     description: app.description,
@@ -42,20 +43,20 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: 'summary_large_image',
     title: app.name,
     description: app.description,
     images: [app.ogImage],
-    creator: "@max_pekur",
+    creator: '@max_pekur',
   },
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: 'icon', url: '/favicon.ico' }],
 };
 
 export const viewport: Viewport = {
-  colorScheme: "dark light",
+  colorScheme: 'dark light',
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
   ],
 };
 
@@ -68,7 +69,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-background text-foreground font-sans antialiased",
+          'bg-background text-foreground font-sans antialiased',
           fontSans.variable,
           fontMono.variable
         )}

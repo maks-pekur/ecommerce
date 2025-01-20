@@ -1,15 +1,16 @@
-"use client";
+'use client';
 
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { cn } from "@/utils";
-import { ChevronDown, Phone } from "lucide-react";
-import React, { forwardRef, useState } from "react";
-import * as RPNInput from "react-phone-number-input";
-import flags from "react-phone-number-input/flags";
+import { ChevronDown, Phone } from 'lucide-react';
+import React, { forwardRef, useState } from 'react';
+import * as RPNInput from 'react-phone-number-input';
+import flags from 'react-phone-number-input/flags';
+
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { cn } from '@/utils';
 
 export default function PhoneInput({ ...props }) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   return (
     <div className="space-y-2" dir="ltr">
@@ -23,7 +24,7 @@ export default function PhoneInput({ ...props }) {
         id="input-46"
         placeholder="Enter phone number"
         value={value}
-        onChange={(newValue) => setValue(newValue ?? "")}
+        onChange={(newValue) => setValue(newValue ?? '')}
       />
     </div>
   );
@@ -31,12 +32,12 @@ export default function PhoneInput({ ...props }) {
 
 const CustomPhoneInput = forwardRef<
   HTMLInputElement,
-  React.ComponentProps<"input">
+  React.ComponentProps<'input'>
 >(({ className, ...props }, ref) => {
   return (
     <Input
       className={cn(
-        "-ms-px rounded-s-none shadow-none focus-visible:z-10",
+        '-ms-px rounded-s-none shadow-none focus-visible:z-10',
         className
       )}
       ref={ref}
@@ -45,13 +46,13 @@ const CustomPhoneInput = forwardRef<
   );
 });
 
-CustomPhoneInput.displayName = "CustomPhoneInput";
+CustomPhoneInput.displayName = 'CustomPhoneInput';
 
 interface CountrySelectProps {
   disabled?: boolean;
   value: RPNInput.Country;
   onChange: (value: RPNInput.Country) => void;
-  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+
   options: { label: string; value: RPNInput.Country | undefined }[];
 }
 
@@ -87,7 +88,7 @@ const CountrySelect = ({
           .filter((x) => x.value)
           .map((option, i) => (
             <option key={option.value ?? `empty-${i}`} value={option.value}>
-              {option.label}{" "}
+              {option.label}{' '}
               {option.value &&
                 `+${RPNInput.getCountryCallingCode(option.value)}`}
             </option>

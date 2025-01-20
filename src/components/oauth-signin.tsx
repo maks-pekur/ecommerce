@@ -1,10 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { useAuthModal } from "@/hooks/use-auth-modal";
 import { signIn } from "next-auth/react";
 import React from "react";
 import { toast } from "sonner";
+
+import { Button } from "@/components/ui/button";
+import { useAuthModal } from "@/hooks/use-auth-modal";
+
 import { Icons } from "./icons";
 
 const oauthProviders = [

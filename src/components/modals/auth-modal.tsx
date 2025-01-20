@@ -1,4 +1,6 @@
-"use client";
+'use client';
+
+import { useState } from 'react';
 
 import {
   Dialog,
@@ -6,10 +8,10 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { useAuthModal } from "@/hooks/use-auth-modal";
-import { useState } from "react";
-import { AuthForm } from "../auth-form";
+} from '@/components/ui/dialog';
+import { useAuthModal } from '@/hooks/use-auth-modal';
+
+import { AuthForm } from '../auth-form';
 
 export const AuthModal = () => {
   const [showTwoFactor, setShowTwoFactor] = useState(false);
@@ -25,12 +27,12 @@ export const AuthModal = () => {
       <DialogContent className="sm:max-w-[400px]">
         <DialogHeader className="flex flex-col items-center space-y-2">
           <DialogTitle className="text-3xl">
-            {!showTwoFactor ? "Sign in" : "Verify"}
+            {!showTwoFactor ? 'Sign in' : 'Verify'}
           </DialogTitle>
           <DialogDescription>
             {!showTwoFactor
-              ? "We will offer you a gift on your birthday, store delivery address, and tell you about promotions"
-              : "4-digit code was sent to"}
+              ? 'We will offer you a gift on your birthday, store delivery address, and tell you about promotions'
+              : '4-digit code was sent to'}
           </DialogDescription>
         </DialogHeader>
 

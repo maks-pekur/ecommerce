@@ -1,11 +1,11 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from 'next/server';
 
-const protectedRoutes = ["/dashboard(.*)", "/checkout"];
-const excludedRoutes = ["/api(.*)"];
+const protectedRoutes = ['/dashboard(.*)', '/checkout'];
+const excludedRoutes = ['/api(.*)'];
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const sessionCookie = request.cookies.get("authjs.session-token");
+  const sessionCookie = request.cookies.get('authjs.session-token');
 
   const isProtectedRoute = protectedRoutes.some((route) =>
     pathname.startsWith(route)
@@ -18,13 +18,13 @@ export function middleware(request: NextRequest) {
   }
 
   if (isProtectedRoute && !sessionCookie) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL('/', request.url));
   }
 }
 
 export const config = {
   matcher: [
-    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
-    "/(api|trpc)(.*)",
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    '/(api|trpc)(.*)',
   ],
 };

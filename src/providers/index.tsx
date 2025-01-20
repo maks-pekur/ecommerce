@@ -1,16 +1,17 @@
-"use client";
+'use client';
 
-import { AuthModal } from "@/components/modals/auth-modal";
 import {
   AlertTriangle,
   CircleCheckBig,
   CircleX,
   Info,
   Loader2,
-} from "lucide-react";
-import { ThemeProvider, useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Toaster } from "sonner";
+} from 'lucide-react';
+import { ThemeProvider, useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { Toaster } from 'sonner';
+
+import { AuthModal } from '@/components/modals/auth-modal';
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -33,14 +34,14 @@ const ToasterProvider = () => {
 
   return (
     <Toaster
-      theme={resolvedTheme === "dark" ? "dark" : "light"}
+      theme={resolvedTheme === 'dark' ? 'dark' : 'light'}
       toastOptions={{
         style: {
-          background: "rgba(0, 0, 0, 0.8)",
-          color: "white",
-          padding: "10px 20px",
-          borderRadius: "100px",
-          border: "1px solid rgba(255, 255, 255, 0.1)",
+          background: 'rgba(0, 0, 0, 0.8)',
+          color: 'white',
+          padding: '10px 20px',
+          borderRadius: '100px',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
         },
       }}
       icons={{
